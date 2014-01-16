@@ -5,3 +5,6 @@
 *~
 .project
 .pydevproject
+node/
+py/djcode/mysite/db.sqlite3
+py/examples/
