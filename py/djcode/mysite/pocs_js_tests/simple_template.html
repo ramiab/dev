@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>simple template</title>
+    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <style>
+        h1 {
+            color:blue;
+            text-align:left;
+            font-size:18pt;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>My Test Page</h1>
+    <p id="my_p">Test Paragraph</p>
+
+    <form id="myForm" action="myAction">
+      <div><label>Name: <input type="text" name="name" autofocus required></label></div>
+      <div><label>Email: <input type="email" name="email" placeholder="Enter a valid email address"></label></div><br/>
+      <div><label>Website: <input type="url" name="website" required></label></div><br/>
+        Age: <input type="number" size="6" name="age" min="18" max="99" value="21"><br>
+        Satisfaction: <input type="range" size="2" name="satisfaction" min="1" max="5" value="3">
+      <div><label><input type="submit" value="Go Submit"></label></div>
+      <div><label><input id="ajaxButton" type="button" value="Go Ajax"></label></div>
+    </form>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+    var val = document.getElementById('my_p').innerHTML;
+    console.debug('val = '+val);
+
+$(function(){
+    $('#ajaxButton').click(function(){
+        //var data = $('#myForm').serializeArray();
+        //console.log( 'data = '+JSON.stringify(data) );
+
+        var data1 = $('#myForm').serialize();
+        console.log( 'data1 = '+data1 );
+
+        $.ajax({
+          type: "POST",
+          url: "some_url.php",
+          data: data1)
+          .done(function( msg ) {
+            alert( "Data Saved: " + msg );
+          });
+    });
+
+});
+
+</script>
+
+</body>
+</html>
