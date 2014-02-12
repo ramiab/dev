@@ -5,7 +5,7 @@ from unittest import TestCase
 from str_int_conversion import convert_int_to_str, convert_str_to_int
 
 
-class CalcTest(TestCase):
+class IntStrTest(TestCase):
     def setup(self):
         pass
 
